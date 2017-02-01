@@ -10,9 +10,9 @@
 \begin{document}
 
 \section*{Assignment 0}
-Name: Julien Neves
-\\Student Number: 260462227
-\\Date: January 30, 2017
+Name: Julien Neves\\
+Name: Matthieu Ranger\\
+Date: January 30, 2017
 
 \subsection*{Problem 1}
 
@@ -24,21 +24,21 @@ The naive idea is to "bracket around" the acceptable region in optimization. Thi
 
 Choosing a point to evaluate \textbf{F} is generally done by selecting $x_i = a + a_i (b-a)$ where 
 
-$ a_1 = \frac{3-\sqrt{5}}{2} $ and $a_2 = \frac{\sqrt{5} - 1}{2}$
+$$ a_1 = \frac{3-\sqrt{5}}{2}$$ and $$a_2 = \frac{\sqrt{5} - 1}{2}$$
 
 These values come from the criteria where the length of the new interval is independent of the lower or upper interval being chosen, and the ability to reuse interior points of previous iterations.
 
-The \texbf{Nelder-Mead} method iterates over a simplex formed from the evaluation of \texbf{F} (starting with an initial guess). At each iteration, the point with the lowest value in the simplex (a corner) will reflect the opposite edge of the simplex (by twice the distance from the vertex to the opposing edge), prompting a search over the formed triangle outside the simplex for function values greater than ones in the simplex. If one is found, the simplex is expanded and we iterate.
+The \textbf{Nelder-Mead} method iterates over a simplex formed from the evaluation of \textbf{F} (starting with an initial guess). At each iteration, the point with the lowest value in the simplex (a corner) will reflect the opposite edge of the simplex (by twice the distance from the vertex to the opposing edge), prompting a search over the formed triangle outside the simplex for function values greater than ones in the simplex. If one is found, the simplex is expanded and we iterate.
 
 If none are found, we contract the simplex by halving the distance between the point and its opposing edge, and shrink the simplex towards the best point if this new point is no better than the second worst. 
 
 \subsubsection*{4.2 - Newton-Rhapson Method}
 
-Newton-Raphson uses quadratic approximations of \texbf{F} to compute the root of the gradient (hence finding a max/minima). The updating rule is 
+Newton-Raphson uses quadratic approximations of \textbf{F} to compute the root of the gradient (hence finding a max/minima). The updating rule is 
 
-$ x^{(k+1)} \leftarrow x^{(k)} - [f''(x^{(k)})]^{-1}f'(x^{(k)}$
+$$x^{(k+1)} \leftarrow x^{(k)} - [f''(x^{(k)})]^{-1}f'(x^{(k)}$$
 
-which is a result from second order Taylor approximations of \texbf{F} at $x^{(k)}$, when solving the first order condition. Note that Newton-Raphson requires the function being twice differentiable (or double differentiation being numerically approximable, at least). The method is well-behaved on globally concave/vex functions, but may get stuck in "flat" areas if an initial guess is too far from a local max/minima. 
+which is a result from second order Taylor approximations of \textbf{F} at $x^{(k)}$, when solving the first order condition. Note that Newton-Raphson requires the function being twice differentiable (or double differentiation being numerically approximable, at least). The method is well-behaved on globally concave/vex functions, but may get stuck in "flat" areas if an initial guess is too far from a local max/minima. 
 
 \subsubsection*{4.3 - Quasi-Newton Methods}
 
